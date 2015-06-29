@@ -9,9 +9,7 @@ Publishing a test suite as a module lets multiple modules all ensure compatibili
 
 Using this module will help to create easy to consume APIs for building custom bitcoin transactions.
 
-## Use
-
-## how to use
+## How to use
 
 To use the test suite from this module you can `require('abstract-common-blockchain/tests')`
 
@@ -42,7 +40,7 @@ var abstractCommonBlockchainTests = require('abstract-common-blockchain/tests')
 abstractCommonBlockchainTests(test, common)
 ```
 
-## Use
+## How to build blockchain software
 
 Create an SPV wallet with [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib), [CryptoCoinJS](https://github.com/cryptocoinjs/cryptocoin) or [Bitcore](https://github.com/bitpay/bitcore) to sign transactions and messages.
 
