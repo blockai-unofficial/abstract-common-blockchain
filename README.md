@@ -5,9 +5,42 @@ Combines the [common-blockchain REST API](https://github.com/common-blockchain/c
 
 The goal of this module is to define a de-facto standard blockchain API. Inspired by the [abstract-blob-store](https://github.com/maxogden/abstract-blob-store) and [abstract-leveldown](https://github.com/rvagg/abstract-leveldown) modules, which have [test suites that are usable as modules](https://github.com/rvagg/abstract-leveldown/tree/master/abstract).
 
-Publishing a test suite as a module lets multiple modules all ensure compatibility since they use the same test suite. For example, [level.js uses abstract-leveldown](https://github.com/maxogden/level.js/blob/master/test/test.js), and so does [memdown](https://github.com/rvagg/memdown/blob/master/test.js) and [leveldown](https://github.com/rvagg/node-leveldown/blob/master/test/close-test.js) and others.
+Publishing a test suite as a module lets multiple modules all ensure compatibility since they use the same test suite. For example, [s3-blob-store uses abstract-blob-store](https://github.com/jb55/s3-blob-store), and so does [torrent-blob-store](https://github.com/mafintosh/torrent-blob-store), [bitstore-blob-store](https://github.com/blockai/bitstore-blob-store) and [many others](https://github.com/maxogden/abstract-blob-store#some-modules-that-use-this).
 
 Using this module will help to create easy to consume APIs for building custom bitcoin transactions.
+
+## Use
+
+## how to use
+
+To use the test suite from this module you can `require('abstract-common-blockchain/tests')`
+
+An example of this can be found in the [biteasy-unofficial](https://github.com/howardwu/biteasy-unofficial/blob/master/test.js) test suite. There is also an example in `tests/run.js` in this repo.
+
+You have to implement a setup and teardown function:
+
+```js
+var common = {
+  setup: function(t, cb) {
+    // setup takes a tap/tape compatible test instance in and a callback
+    // this method should construct a new commonBlockchain instance and pass it to the callback:
+    var commonBlockchain = biteasyAPI({ network: 'testnet' })
+    cb(null, commonBlockchain)
+  },
+  teardown: function(t, commonBlockchain, cb) {
+    // teardown takes in the test instance, as well as the commonBlockchain instance
+    else cb()
+    // be sure to call cb() when you are done with teardown
+  }
+}
+```
+
+To run the tests simply pass your test module (`tap` or `tape` or any other compatible modules are supported) and your `common` methods in:
+
+```js
+var abstractCommonBlockchainTests = require('abstract-common-blockchain/tests')
+abstractCommonBlockchainTests(test, common)
+```
 
 ## Use
 
@@ -73,6 +106,8 @@ openpublish.register({
 ```
 
 ## API
+
+A valid common blockchain interface should implement the following APIs. There is a public-access CORS-enabled testnet implementation hosted by [Blockai](https://www.blockai.com) available at `index.js` in this repo.
 
 ### Addresses
 
