@@ -3,7 +3,11 @@ A test suite and interface you can use to implement standard Bitcoin blockchain 
 
 Combines the [common-blockchain REST API](https://github.com/common-blockchain/common-blockchain) with [bitcoind JSON-RPC](https://bitcoin.org/en/developer-reference#getrawtransaction).
 
-Create easy to consume APIs for building custom bitcoin transactions. Make it easy for bitcoin wallets to read and write custom public data embeded in the blockchain.
+The goal of this module is to define a de-facto standard blockchain API. Inspired by the [abstract-blob-store](https://github.com/maxogden/abstract-blob-store) and [abstract-leveldown](https://github.com/rvagg/abstract-leveldown) modules, which have [test suites that are usable as modules](https://github.com/rvagg/abstract-leveldown/tree/master/abstract).
+
+Publishing a test suite as a module lets multiple modules all ensure compatibility since they use the same test suite. For example, [level.js uses abstract-leveldown](https://github.com/maxogden/level.js/blob/master/test/test.js), and so does [memdown](https://github.com/rvagg/memdown/blob/master/test.js) and [leveldown](https://github.com/rvagg/node-leveldown/blob/master/test/close-test.js) and others.
+
+Using this module will help to create easy to consume APIs for building custom bitcoin transactions.
 
 ## Use
 
