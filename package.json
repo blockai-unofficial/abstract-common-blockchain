@@ -1,0 +1,33 @@
+{
+  "name": "abstract-common-blockchain",
+  "version": "0.1.0",
+  "description": "A test suite and interface you can use to implement standard Bitcoin blockchain API calls for various backends and platforms.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node tests/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockai/abstract-common-blockchain.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "blockchain",
+    "common",
+    "api",
+    "test",
+    "suite"
+  ],
+  "author": "William Cotton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockai/abstract-common-blockchain/issues"
+  },
+  "homepage": "https://github.com/blockai/abstract-common-blockchain#readme"
+}
