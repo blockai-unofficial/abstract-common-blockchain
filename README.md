@@ -13,7 +13,7 @@ Using this module will help to create easy to consume APIs for building custom b
 
 To use the test suite from this module you can `require('abstract-common-blockchain/tests')`
 
-An example of this can be found in the [biteasy-unofficial](https://github.com/howardwu/biteasy-unofficial/blob/master/test.js) test suite. There is also an example in `tests/run.js` in this repo.
+An example of this can be found in the [chain-unofficial](https://github.com/andrewmalta13/chain-unofficial/blob/master/test/index.js) test suite. There is also an example in `tests/run.js` in this repo.
 
 You have to implement a setup and teardown function:
 
