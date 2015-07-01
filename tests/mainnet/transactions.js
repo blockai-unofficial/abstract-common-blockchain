@@ -4,7 +4,7 @@ var output_txid = "e5d648f59e1894f1c8c03d6f4da0b1c8b891343790305f9fc1ca4b0130b2f
 module.exports.Get = function(test, common) {
   test('getting a transaction from mainnet', function(t) {
     common.setup(test, function(err, commonBlockchain) {
-      commonBlockchain.Transactions.Get([txid]}, function(err, txs) {
+      commonBlockchain.Transactions.Get([txid], function(err, txs) {
         var tx = txs[0]
         t.equal(tx.txid, txid, "tx.txid should be txid")
         t.equal(tx.txId, txid, "tx.txId should be txid")
