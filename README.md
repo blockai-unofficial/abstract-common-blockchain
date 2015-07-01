@@ -11,7 +11,7 @@ Using this module will help to create easy to consume APIs for building custom b
 
 ## How to use
 
-To use the test suite from this module you can `require('abstract-common-blockchain/tests')`
+To use the test suite from this module you can `require('abstract-common-blockchain/tests/testnet')` or `require('abstract-common-blockchain/tests/mainnet')` 
 
 An example of this can be found in the [chain-unofficial](https://github.com/andrewmalta13/chain-unofficial/blob/master/test/index.js) test suite. There is also an example in `tests/run.js` in this repo.
 
@@ -36,7 +36,7 @@ var common = {
 To run the tests simply pass your test module (`tap` or `tape` or any other compatible modules are supported) and your `common` methods in:
 
 ```js
-var abstractCommonBlockchainTests = require('abstract-common-blockchain/tests')
+var abstractCommonBlockchainTests = require('abstract-common-blockchain/tests/testnet')
 abstractCommonBlockchainTests(test, common)
 ```
 
@@ -112,9 +112,8 @@ A valid common blockchain interface should implement the following APIs. There i
 #### commonBlockchain.Addresses.Summary
 Summary returns a JSON of information regarding provided Bitcoin addresses.
 ```javascript
-commonBlockchain.Addresses.Summary({
-  addresses: ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-}, function (err, resp) {
+commonBlockchain.Addresses.Summary(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
+, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -122,9 +121,8 @@ commonBlockchain.Addresses.Summary({
 #### commonBlockchain.Addresses.Transactions
 Transactions returns a JSON with a list of transactions associated with the provided Bitcoin addresses.
 ```javascript
-commonBlockchain.Addresses.Transactions({
-  addresses: ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-}, function (err, resp) {
+commonBlockchain.Addresses.Transactions(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
+, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -134,8 +132,8 @@ Unspents returns a JSON with a list of unspent outputs for the provided Bitcoin 
 
 ```javascript
 commonBlockchain.Addresses.Unspents({
-  addresses: ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-}, function (err, resp) {
+ ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
+, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -146,10 +144,9 @@ commonBlockchain.Addresses.Unspents({
 Get returns a JSON of information for the provided block IDs.
 ```javascript
 commonBlockchain.Blocks.Get({
-  blockIds: [
-    "00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d", 
+  ["00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d", 
     "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"]
-}, function (err, resp) {
+, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -165,9 +162,7 @@ commonBlockchain.Blocks.Latest(function (err, resp) {
 #### commonBlockchain.Blocks.Propogate
 Propogate is unsupported with Biteasy as of now. Any call to Propogate will return an error.
 ```javascript
-commonBlockchain.Blocks.Propogate({
-  blockHex: ''
-}, function (err, resp) {
+commonBlockchain.Blocks.Propogate(blockHex, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -175,11 +170,10 @@ commonBlockchain.Blocks.Propogate({
 #### commonBlockchain.Blocks.Transactions
 Transactions returns a JSON of transactions for the provided block IDs.
 ```javascript
-commonBlockchain.Blocks.Transactions({
-  blockIds: [
+commonBlockchain.Blocks.Transactions([
     "00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d",
     "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"]
-}, function (err, resp) {
+    , function (err, resp) {
   console.log(resp);
 });
 ```
@@ -189,11 +183,10 @@ commonBlockchain.Blocks.Transactions({
 #### commonBlockchain.Transactions.Get
 Get returns a JSON with transaction data for provided transaction IDs.
 ```javascript
-commonBlockchain.Transactions.Get({
-  txIds: [
-    "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
+commonBlockchain.Transactions.Get(
+["186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
     "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"]
-}, function (err, resp) {
+, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -209,24 +202,21 @@ commonBlockchain.Transactions.Latest(function (err, resp) {
 #### commonBlockchain.Transactions.Outputs
 Outputs returns a JSON of output information for provided transaction IDs.
 ```javascript
-commonBlockchain.Transactions.Outputs({
-  outputs: [
+commonBlockchain.Transactions.Outputs(
+  [
     {
       vout: 0,
       txId: "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836"
     }
   ]
-}, function (err, resp) {
+, function (err, resp) {
   console.log(resp);
 });
 ```
 
 #### commonBlockchain.Transactions.Propogate
-Propogate is unsupported with Biteasy as of now. Any call to Propogate will return an error.
 ```javascript
-commonBlockchain.Transactions.Propogate({
-  hex: ''
-}, function (err, resp) {
+commonBlockchain.Transactions.Propogate(hex, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -234,9 +224,8 @@ commonBlockchain.Transactions.Propogate({
 #### commonBlockchain.Transactions.Status
 Transactions returns a JSON of transactions for the provided transaction IDs.
 ```javascript
-commonBlockchain.Transactions.Status({
-  txIds: [
-    "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
+commonBlockchain.Transactions.Status(
+   ["186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
     "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"]
 }, function (err, resp) {
   console.log(resp);
