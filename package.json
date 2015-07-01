@@ -1,6 +1,6 @@
 {
   "name": "abstract-common-blockchain",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A test suite and interface you can use to implement standard Bitcoin blockchain API calls for various backends and platforms.",
   "main": "index.js",
   "directories": {
