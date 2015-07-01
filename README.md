@@ -72,16 +72,18 @@ var commonWallet = {
 }
 ```
 
-Read and write data from the blockchain with a provider like Blocktrail, [Blockcypher](https://github.com/andrewmalta13/blockcypher-unoffical) or [Biteasy](https://github.com/howardwu/biteasy-unofficial).
+Read and write data from the blockchain with a provider like Blocktrail, [Blockcypher](https://github.com/andrewmalta13/blockcypher-unoffical), [Biteasy](https://github.com/howardwu/biteasy-unofficial) or various others.
 
+
+## Example (Biteasy)
 ```javascript
 var biteasyAPI = require('biteasy-unofficial')
 
 var commonBlockchain = biteasyAPI({ network: 'testnet' })
 
-commonBlockchain.Addresses.Transactions({
-  addresses: ["n3PDRtKoHXHNt8FU17Uu9Te81AnKLa7oyU"]
-}, function (err, resp) {
+commonBlockchain.Addresses.Transactions( 
+  ["n3PDRtKoHXHNt8FU17Uu9Te81AnKLa7oyU"]
+, function (err, resp) {
   console.log(resp)
 });
 ```
@@ -107,6 +109,8 @@ openpublish.register({
 
 A valid common blockchain interface should implement the following APIs. There is a public-access CORS-enabled testnet implementation hosted by [Blockai](https://www.blockai.com) available at `index.js` in this repo.
 
+Be sure to check out `types.json` in this repo for information about inputs and ouputs of common blockchain functions.
+
 ### Addresses
 
 #### commonBlockchain.Addresses.Summary
@@ -131,7 +135,7 @@ commonBlockchain.Addresses.Transactions(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "
 Unspents returns a JSON with a list of unspent outputs for the provided Bitcoin addresses.
 
 ```javascript
-commonBlockchain.Addresses.Unspents({
+commonBlockchain.Addresses.Unspents(
  ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
 , function (err, resp) {
   console.log(resp);
@@ -143,7 +147,7 @@ commonBlockchain.Addresses.Unspents({
 #### commonBlockchain.Blocks.Get
 Get returns a JSON of information for the provided block IDs.
 ```javascript
-commonBlockchain.Blocks.Get({
+commonBlockchain.Blocks.Get(
   ["00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d", 
     "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"]
 , function (err, resp) {
@@ -152,7 +156,7 @@ commonBlockchain.Blocks.Get({
 ```
 
 #### commonBlockchain.Blocks.Latest
-Latest returns a JSON of the latest blocks to hit Biteasy's endpoint.
+Latest returns a JSON of the latest blocks to hit a commonBlockChainAPI's endpoint.
 ```javascript
 commonBlockchain.Blocks.Latest(function (err, resp) {
   console.log(resp);
@@ -160,7 +164,7 @@ commonBlockchain.Blocks.Latest(function (err, resp) {
 ```
 
 #### commonBlockchain.Blocks.Propogate
-Propogate is unsupported with Biteasy as of now. Any call to Propogate will return an error.
+Propogate takes in raw block hex and will propogate it to the common blockchain API's network (NOTE: not supported by most providers)
 ```javascript
 commonBlockchain.Blocks.Propogate(blockHex, function (err, resp) {
   console.log(resp);
@@ -192,7 +196,7 @@ commonBlockchain.Transactions.Get(
 ```
 
 #### commonBlockchain.Transactions.Latest
-Latest returns a JSON of the latest transactions to hit Biteasy's endpoint (mostly unconfirmed).
+Latest returns a JSON of the latest transactions to hit a common blockchain API's endpoint.
 ```javascript
 commonBlockchain.Transactions.Latest(function (err, resp) {
   console.log(resp);
@@ -201,6 +205,8 @@ commonBlockchain.Transactions.Latest(function (err, resp) {
 
 #### commonBlockchain.Transactions.Outputs
 Outputs returns a JSON of output information for provided transaction IDs.
+NOTE: "txid" and "txId" can be used interchangebly in this context to support the union of both bitcoind
+and common blockchain's standards.
 ```javascript
 commonBlockchain.Transactions.Outputs(
   [
@@ -215,6 +221,7 @@ commonBlockchain.Transactions.Outputs(
 ```
 
 #### commonBlockchain.Transactions.Propogate
+Propogates the transaction supplied via raw hex.
 ```javascript
 commonBlockchain.Transactions.Propogate(hex, function (err, resp) {
   console.log(resp);
