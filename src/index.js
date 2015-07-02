@@ -93,4 +93,5 @@ module.exports = function(opts) {
     Transactions: Transactions,
     Addresses: Addresses
   }
+
 }
