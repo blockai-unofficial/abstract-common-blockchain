@@ -51,24 +51,25 @@ var address = "n3PDRtKoHXHNt8FU17Uu9Te81AnKLa7oyU"
 var privateKeyWIF = "KyjhazeX7mXpHedQsKMuGh56o3rh8hm8FGhU3H6HPqfP9pA4YeoS"
 
 var signFromPrivateKeyWIF = function(privateKeyWIF) {
-  return function(tx, callback) {
+  return function(txHex, callback) {
+    var tx = bitcoin.Transaction.fromHex(txHex);
     var key = bitcoin.ECKey.fromWIF(privateKeyWIF)
     tx.sign(0, key)
     callback(false, tx)
   }
 };
 
-var signTransaction = signFromPrivateKeyWIF(privateKeyWIF)
+var signRawTransaction = signFromPrivateKeyWIF(privateKeyWIF)
 
-var signMessageBase64 = function (message, callback) {
+var signMessage = function (message, callback) {
   var key = bitcoin.ECKey.fromWIF(privateKeyWIF)
   var network = bitcoin.networks.testnet
   callback(false, bitcoin.Message.sign(key, message, network).toString('base64'))
 }
 
 var commonWallet = {
-  signTransaction: signTransaction,
-  signMessageBase64: signMessageBase64
+  signRawTransaction: signRawTransaction,
+  signMessage: signMessage
 }
 ```
 
