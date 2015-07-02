@@ -82,9 +82,9 @@ var biteasyAPI = require('biteasy-unofficial')
 
 var commonBlockchain = biteasyAPI({ network: 'testnet' })
 
-commonBlockchain.Addresses.Transactions( 
-  ["n3PDRtKoHXHNt8FU17Uu9Te81AnKLa7oyU"]
-, function (err, resp) {
+commonBlockchain.Addresses.Transactions([
+  "n3PDRtKoHXHNt8FU17Uu9Te81AnKLa7oyU"
+], function (err, resp) {
   console.log(resp)
 });
 ```
@@ -117,8 +117,10 @@ Be sure to check out `types.json` in this repo for information about inputs and 
 #### commonBlockchain.Addresses.Summary
 Summary returns a JSON of information regarding provided Bitcoin addresses.
 ```javascript
-commonBlockchain.Addresses.Summary(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-, function (err, resp) {
+commonBlockchain.Addresses.Summary([
+  "1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq",
+  "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -126,8 +128,10 @@ commonBlockchain.Addresses.Summary(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUe
 #### commonBlockchain.Addresses.Transactions
 Transactions returns a JSON with a list of transactions associated with the provided Bitcoin addresses.
 ```javascript
-commonBlockchain.Addresses.Transactions(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-, function (err, resp) {
+commonBlockchain.Addresses.Transactions([
+  "1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq",
+  "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -136,9 +140,10 @@ commonBlockchain.Addresses.Transactions(["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "
 Unspents returns a JSON with a list of unspent outputs for the provided Bitcoin addresses.
 
 ```javascript
-commonBlockchain.Addresses.Unspents(
- ["1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq", "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"]
-, function (err, resp) {
+commonBlockchain.Addresses.Unspents([
+  "1HUTmSsFp9Rg4FYRftp85GGyZFEndZSoeq",
+  "1DmUeGjuQWLHxq5jhyn3uPCD9N16Ar9xGw"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -148,10 +153,10 @@ commonBlockchain.Addresses.Unspents(
 #### commonBlockchain.Blocks.Get
 Get returns a JSON of information for the provided block IDs.
 ```javascript
-commonBlockchain.Blocks.Get(
-  ["00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d", 
-    "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"]
-, function (err, resp) {
+commonBlockchain.Blocks.Get([
+  "00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d",
+  "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -176,9 +181,9 @@ commonBlockchain.Blocks.Propogate(blockHex, function (err, resp) {
 Transactions returns a JSON of transactions for the provided block IDs.
 ```javascript
 commonBlockchain.Blocks.Transactions([
-    "00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d",
-    "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"]
-    , function (err, resp) {
+  "00000000000000000216a936ebc1962e319a51bab8d3eae69335ac940284491d",
+  "00000000000000001034f207d3ce18f03054ddfb0e4dba712f5b76cb1cda9499"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -188,10 +193,10 @@ commonBlockchain.Blocks.Transactions([
 #### commonBlockchain.Transactions.Get
 Get returns a JSON with transaction data for provided transaction IDs.
 ```javascript
-commonBlockchain.Transactions.Get(
-["186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
-    "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"]
-, function (err, resp) {
+commonBlockchain.Transactions.Get([
+  "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
+  "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -209,14 +214,12 @@ Outputs returns a JSON of output information for provided transaction IDs.
 NOTE: "txid" and "txId" can be used interchangebly in this context to support the union of both bitcoind
 and common blockchain's standards.
 ```javascript
-commonBlockchain.Transactions.Outputs(
-  [
-    {
-      vout: 0,
-      txId: "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836"
-    }
-  ]
-, function (err, resp) {
+commonBlockchain.Transactions.Outputs([
+  {
+    vout: 0,
+    txId: "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836"
+  }
+], function (err, resp) {
   console.log(resp);
 });
 ```
@@ -232,10 +235,10 @@ commonBlockchain.Transactions.Propogate(hex, function (err, resp) {
 #### commonBlockchain.Transactions.Status
 Transactions returns a JSON of transactions for the provided transaction IDs.
 ```javascript
-commonBlockchain.Transactions.Status(
-   ["186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
-    "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"]
-}, function (err, resp) {
+commonBlockchain.Transactions.Status([
+  "186efd8689fc403e5cc6faeef9497fcf177750b52afe55f407244d0c95625836",
+  "9375818c85a6712416dac6edd403498180ee9ee0e604bd11ec35beaea384da51"
+], function (err, resp) {
   console.log(resp);
 });
 ```
