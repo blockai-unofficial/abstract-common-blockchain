@@ -42,7 +42,7 @@ module.exports.Unspents = function(test, common) {
         t.ok(typeof(utxo.vout) == "number", "utxo.vout should be a number")
         t.ok(typeof(utxo.value) == "number", "utxo.txid should be a number")
         t.ok(typeof(utxo.amount) == "number", "utxo.amount should be a number")
-        t.ok(typeof(utxo.confirmations) == "number", "utxo.confirmations should be a number")
+        t.true((typeof(utxo.confirmations) == "object") || typeof(utxo.confirmations) == "number", "utxo.confirmations should be object(null) or a number")
         t.end()
       });
     })

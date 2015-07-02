@@ -1,5 +1,4 @@
 var txid = "8128c9132d019f02fcd1edcabfb293880d2ac842dc9c0de3a2500448b5b2808a"
-var output_txid = "e5d648f59e1894f1c8c03d6f4da0b1c8b891343790305f9fc1ca4b0130b2fe8c";
 
 module.exports.Get = function(test, common) {
   test('getting a transaction from mainnet', function(t) {
@@ -10,9 +9,9 @@ module.exports.Get = function(test, common) {
         t.equal(tx.txId, txid, "tx.txId should be txid")
         t.equal(tx.vin.length, 2, "tx.vin.length should be 2")
         var vin = tx.vin[0]
-        t.true(vin.txid === null || vin.txid === output_txid, "tx.vin[0].txid should be txid")
-        t.true(vin.txId === null || vin.txId === output_txid, "tx.vin[0].txId should be txid")
-        t.equal(vin.vout, 3, "tx.vin[0].vout should be 1")
+        t.true(vin.txid === null || typeof(vin.txid) == "string", "tx.vin[0].txid should be txid")
+        t.true(vin.txId === null || typeof(vin.txId) == "string", "tx.vin[0].txId should be txid")
+        t.true(vin.vout === null || typeof(vin.vout) == "number", "tx.vin[0].vout should be null or number")
         t.equal(tx.vout.length, 2, "tx.vout.length should be 2")
         var vout = tx.vout
         var output = vout[0]
@@ -47,7 +46,7 @@ module.exports.Outputs = function(test, common) {
         t.equal(output.txId, txid, "output.txId should be txid")
         t.equal(output.value, 6980000, "output.value should be 6980000")
         t.equal(output.vout, 0, "output.vout should be 0")
-        t.equal(output.scriptPubKey, '76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac', "output.scriptPubKey should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac")
+        t.true(output.scriptPubKey === null || output.scriptPubKey === '76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac', "output.scriptPubKey should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac")
         var change_output = txos[1]
         t.equal(change_output.txid, txid, "change_output.txid should be txid")
         t.equal(change_output.txId, txid, "change_output.txId should be txid")

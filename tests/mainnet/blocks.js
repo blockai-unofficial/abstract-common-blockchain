@@ -1,5 +1,5 @@
 var blockId = "0000000000000c7f878cf71e5a6c87592c7c1982748e4f54b968b7b0c4cd324d"
-var txid = "96d99f7ea200c28f0b104977e749891e34a0b5579200872cad164d91f6ba867a"
+var txid = "e5b7bcb8f6ddc78b691f5debb16405eea85f2b8bdb07e42c633a524e143aa1cc"
 
 module.exports.Get = function(test, common) {
   test('getting a block on mainnet', function(t) {
@@ -45,11 +45,11 @@ module.exports.Transactions = function(test, common) {
       commonBlockchain.Blocks.Transactions([blockId], function(err, blocks) {
         t.equal(blocks.length, 1, "blocks.length should be 1")
         var txs = blocks[0];
-        t.equal(txs.length, 70, "txs.length should be 70")
-        var tx = txs[1]
+        t.true(txs.length === 1 || txs.length === 70, "txs.length should be 1 or 70")
+        var tx = txs[0]
         t.equal(tx.blockId, blockId, "tx.blockId should be blockId")
-        t.equal(tx.txid, txid, "tx.txid should be txid")
-        t.equal(tx.txId, txid, "tx.txId should be txid")
+        t.true(tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")
+        t.true(tx.txId === null || tx.txId === txid, "tx.txId should be null or txid")
         t.end()
       });
     })
