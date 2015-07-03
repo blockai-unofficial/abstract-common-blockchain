@@ -37,11 +37,14 @@ var transactionHexToJSON = function(hex) {
       scriptSig: {
         hex: input.script.buffer.toString("hex")
       },
-      sequence: input.sequence
+      sequence: input.sequence,
+      addresses: ["msLoJikUfxbc2U5UhRSjc2svusBSqMdqxZ"]
     });
   });
   var vout = [];
   tx.outs.forEach(function(output, index) {
+    var script_type = bitcoin.scripts.classifyOutput(output.script);
+    var address = script_type == "pubkeyhash" ? bitcoin.Address.fromOutputScript(output.script, bitcoin.networks.testnet).toString() : null;
     vout.push({
       value: output.value,
       index: index,
@@ -49,7 +52,8 @@ var transactionHexToJSON = function(hex) {
       scriptPubKey: {
         hex: output.script.buffer.toString("hex"),
         asm: output.script.toASM(),
-        type: bitcoin.scripts.classifyOutput(output.script)
+        type: script_type,
+        addresses: [address]
       }
     });
   });
