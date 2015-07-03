@@ -1,0 +1,258 @@
+{
+  "addresses": {
+    "summary": {
+      "arguments": {
+        "addresses": [
+          "String"
+        ]
+      },
+      "expected": [
+        {
+          "address": "String",
+          "balance": "Number",
+          "totalReceived": "Number",
+          "totalSent": "Number",
+          "txCount": "Number"
+        }
+      ]
+    },
+    "transactions": {
+      "arguments": {
+        "addresses": [
+          "String"
+        ],
+        "blockHeight": "?Number"
+      },
+      "expected": 
+        [  
+          {
+            "blockHeight": "?Number",
+            "blockId": "?String",
+            "hex": "String",
+            "txHex": "String",
+            "txid": "String",
+            "txId": "String"
+          }
+        ]
+    },
+    "unspents": {
+      "arguments": {
+        "addresses": [
+          "String"
+        ]
+      },
+      "expected": 
+        [
+          {
+            "address": "String",
+            "confirmations": "Number",
+            "txid": "String",
+            "txId": "String",
+            "value": "Number",
+            "amount": "Number",
+            "vout": "Number",
+            "scriptPubKey": "String"
+          }
+        ]
+  },
+  "blocks": {
+    "get": {
+      "arguments": {
+        "blockIds": [
+          "String"
+        ]
+      },
+      "expected": [
+        {
+          "blockHex": "String",
+          "blockId": "String"
+        }
+      ]
+    },
+    "latest": {
+      "arguments": {},
+      "expected": {
+        "blockHex": "String",
+        "blockId": "String"
+      }
+    },
+    "propagate": {
+      "arguments": {
+        "blockHex": "String"
+      },
+      "expected": {}
+    },
+    "transactions": {
+      "arguments": {
+        "blockIds": [
+          "String"
+        ]
+      },
+      "expected": 
+        [
+          [
+            {
+              "blockId": "String",
+              "txid": "String",
+              "txId": "String"
+            }
+          ]
+        ]
+  },
+  "transactions": {
+    "get": {
+      "arguments": {
+        "txids": [
+          "String"
+        ]
+      },
+      "expected": [
+        {
+          "txHex": "String",
+          "hex" : "String",
+          "txid": "String",
+          "txId": "String",
+          "version": "Number",
+          "locktime": "Number",
+          "fee": "Number",
+          "vin": [
+            {
+              "txid": "String",
+              "txId": "String",
+              "vout": "Number",
+              "addresses": [
+                "String"
+              ],
+              "scriptSig": 
+              {
+                "asm": "String",
+                "hex": "String"
+              },
+              "sequence": "Number" 
+            }
+          ],
+          "vout":[
+            {
+              "value": "Number",
+              "index": "Number",
+              "n": "Number",
+              "spentTxid": "String",
+              "scriptPubKey":
+              {
+                "asm": "String",
+                "hex": "String",
+                "reqSigs": "Number",
+                "type": "String",
+                "addresses": [
+                  "String"
+                ]
+              }
+            }
+          ],
+          "blockhash": "String",
+          "blockindex": "Number",
+          "blocktime": "Number",
+          "confirmations": "Number",
+          "timeReceived": "Number", 
+        }
+      ]
+    },
+    "latest": {
+      "arguments": {},
+      "expected": [
+        {
+          "hex" : "String",
+          "txHex": "String",
+          "txid": "String",
+          "txId": "String",
+          "version": "Number",
+          "locktime": "Number",
+          "fee": "Number",
+          "vin": [
+            {
+              "txid": "String",
+              "txId": "String",
+              "vout": "Number", 
+              "addresses": [
+                "String"
+              ],
+              "scriptSig": 
+                {
+                  "asm": "String",
+                  "hex": "String"
+                },
+              "sequence": "Number"
+            }
+          ],
+          "vout":[
+          {
+            "value": "Number",
+            "index": "Number",
+            "n": "Number",
+            "spentTxid": "String",
+            "scriptPubKey":
+            {
+              "asm": "String",
+              "hex": "String",
+              "reqSigs": "Number",
+              "type": "String",
+              "addresses": [
+                "String"
+              ]
+            }
+          }
+          ],
+          "blockhash": "String",
+          "blockindex": "Number",
+          "blocktime": "Number",
+          "confirmations": "Number",
+          "timeReceived": "Number", 
+        }
+      ]
+    },
+    "outputs": {
+      "arguments": {
+        "outputs": [
+          {
+            "txid": "String",
+            "txId": "String",
+            "vout": "Number"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "scriptPubKey": "String",
+          "txid": "String",
+          "txId": "String",
+          "value": "Number",
+          "vout": "Number"
+        }
+      ]
+    },
+    "propagate": {
+      "arguments": {
+        "hex": "String"
+      },
+      "expected": 
+        {
+          "txid": "String",
+          "txId": "String"
+        }
+    },
+    "status": {
+      "arguments": {
+        "txids": [
+          "String"
+        ]
+      },
+      "expected": [
+        {
+          "blockId": "?String",
+          "txid": "String",
+          "txId": "String"
+        }
+      ]
+    }
+  }
+}
