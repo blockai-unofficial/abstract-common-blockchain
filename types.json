@@ -90,10 +90,13 @@
       },
       "expected": 
         [
-          {
-            "txid": "String",
-            "txId": "String"
-          } 
+          [
+            {
+              "blockId": "String",
+              "txid": "String",
+              "txId": "String"
+            }
+          ]
         ]
   },
   "transactions": {
@@ -133,7 +136,7 @@
               "value": "Number",
               "index": "Number",
               "n": "Number",
-              "spentTxid": "not provided",
+              "spentTxid": "String",
               "scriptPubKey":
               {
                 "asm": "String",
@@ -186,7 +189,7 @@
             "value": "Number",
             "index": "Number",
             "n": "Number",
-            "spentTxid": "not provided",
+            "spentTxid": "String",
             "scriptPubKey":
             {
               "asm": "String",
