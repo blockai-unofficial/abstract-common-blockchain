@@ -9,6 +9,11 @@ Publishing a test suite as a module lets multiple modules all ensure compatibili
 
 Using this module will help to create easy to consume APIs for building custom bitcoin transactions.
 
+## API Provider Coverage
+
+We made a <a href="http://abstract-common-blockchain.herokuapp.com"> quick way </a> for developers to gauge which providers support specific parts of abstract common blockchain so they can make the decision to download the correct npm package (or maybe a combination of a couple). The score in the table is a subjective measure of which endpoints we think are slightly more important to others. If you don't agree with some of the weightings or if you are a api provider who wants us to update our wrappers to support some new functionality, send us an email.
+
+
 ## How to use
 
 To use the test suite from this module you can `require('abstract-common-blockchain/tests/testnet')` or `require('abstract-common-blockchain/tests/mainnet')` 
