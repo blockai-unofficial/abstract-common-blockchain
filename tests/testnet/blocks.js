@@ -43,7 +43,7 @@ module.exports.Transactions = function(test, common) {
   test('getting all transaction by blocks on testnet', function(t) {
     common.setup(test, function(err, commonBlockchain) {
       commonBlockchain.Blocks.Transactions([blockId], function(err, blocks) {
-        t.equal(blocks.length, 1, "blocks.length should be 1")
+        t.true(blocks === null || blocks.length === 1, "blocks.length should be null or 1")
         var txs = blocks[0];
         t.true(txs.length === 1 || txs.length === 6, "txs.length should be 1 or 6")
         var tx = txs[0]
