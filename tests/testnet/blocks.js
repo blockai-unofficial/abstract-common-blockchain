@@ -44,14 +44,22 @@ module.exports.Transactions = function(test, common) {
     common.setup(test, function(err, commonBlockchain) {
       commonBlockchain.Blocks.Transactions([blockId], function(err, blocks) {
         t.true(blocks === null || blocks.length === 1, "blocks.length should be null or 1")
-        var txs = blocks[0];
-        t.true(txs.length === 1 || txs.length === 6, "txs.length should be 1 or 6")
-        var tx = txs[0]
-        t.equal(tx.blockId, blockId, "tx.blockId should be blockId")
-        t.true(tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")
-        t.true(tx.txId === null || tx.txId === txid, "tx.txId should be null or txid")
+        var txs;
+        var tx;
+        if (blocks !== null) {
+          txs = blocks[0]
+          tx = txs[0]
+        }
+        else {
+          txs = null
+          tx = null
+        }
+        t.true(txs === null || txs.length === 70, "txs.length should be null or 70")
+        t.true(tx === null || tx.blockId === blockId, "tx.blockId should be null or blockId")
+        t.true(tx === null || tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")
+        t.true(tx === null || tx.txId === null || tx.txId === txid, "tx.txId should be null or txid")
         t.end()
-      });
+      })
     })
   })
 }
