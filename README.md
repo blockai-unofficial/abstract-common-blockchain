@@ -174,10 +174,10 @@ commonBlockchain.Blocks.Latest(function (err, resp) {
 });
 ```
 
-#### commonBlockchain.Blocks.Propogate
-Propogate takes in raw block hex and will propogate it to the common blockchain API's network (NOTE: not supported by most providers)
+#### commonBlockchain.Blocks.Propagate
+Propagate takes in raw block hex and will propagate it to the common blockchain API's network (NOTE: not supported by most providers)
 ```javascript
-commonBlockchain.Blocks.Propogate(blockHex, function (err, resp) {
+commonBlockchain.Blocks.Propagate(blockHex, function (err, resp) {
   console.log(resp);
 });
 ```
@@ -229,10 +229,10 @@ commonBlockchain.Transactions.Outputs([
 });
 ```
 
-#### commonBlockchain.Transactions.Propogate
-Propogates the transaction supplied via raw hex.
+#### commonBlockchain.Transactions.Propagate
+Propagates the transaction supplied via raw hex.
 ```javascript
-commonBlockchain.Transactions.Propogate(hex, function (err, resp) {
+commonBlockchain.Transactions.Propagate(hex, function (err, resp) {
   console.log(resp);
 });
 ```
