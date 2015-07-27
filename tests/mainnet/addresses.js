@@ -19,8 +19,7 @@ module.exports.Transactions = function(test, common) {
       commonBlockchain.Addresses.Transactions([address], function(err, addresses_txs) {
         var txs = addresses_txs[0];
         var tx = txs[0];
-        t.ok(typeof(tx.blockHeight) != "undefined", "tx.blockHeight should be defined")
-        t.ok(typeof(tx.blockId) != "undefined", "tx.blockId should be defined")
+        t.ok(typeof(tx.blockheight) != "undefined", "tx.blockHeight should be defined")
         t.ok(typeof(tx.txid) != "undefined", "tx.txid should be defined")
         t.ok(typeof(tx.txId) != "undefined", "tx.txId should be defined")
         t.end()
