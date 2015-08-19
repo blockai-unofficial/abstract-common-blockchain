@@ -47,7 +47,9 @@ abstractCommonBlockchainTests(test, common)
 
 ## How to build blockchain software
 
-Create an SPV wallet with [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib), [CryptoCoinJS](https://github.com/cryptocoinjs/cryptocoin) or [Bitcore](https://github.com/bitpay/bitcore) to sign transactions and messages.
+Create an wallet with [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib), [CryptoCoinJS](https://github.com/cryptocoinjs/cryptocoin) or [Bitcore](https://github.com/bitpay/bitcore) to sign transactions and messages.
+
+Make sure it adheres to the [Common Wallet protocol](https://github.com/blockai/abstract-common-wallet).
 
 ```javascript
 var bitcoin = require("bitcoinjs-lib")
@@ -74,7 +76,9 @@ var signMessage = function (message, callback) {
 
 var commonWallet = {
   signRawTransaction: signRawTransaction,
-  signMessage: signMessage
+  signMessage: signMessage,
+  network: "testnet",
+  address: address
 }
 ```
 
